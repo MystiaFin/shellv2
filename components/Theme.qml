@@ -23,4 +23,5 @@ Singleton {
     readonly property color launcherSearchBackgroundColor: activeTheme.searchBackgroundColor
     readonly property color launcherSearchBorderColor: activeTheme.searchBorderColor
     readonly property color launcherPlaceholderTextColor: activeTheme.placeholderTextColor
+    readonly property color wallpaperFallbackColor: activeTheme.wallpaperFallbackColor
 }

@@ -11,4 +11,5 @@ QtObject {
     readonly property color searchBackgroundColor: "#282828"
     readonly property color searchBorderColor: "#504945"
     readonly property color placeholderTextColor: "#928374"
+    readonly property color wallpaperFallbackColor: "#1d2021"
 }
