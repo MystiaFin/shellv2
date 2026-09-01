@@ -13,4 +13,16 @@ ShellRoot {
 
         Desktop {}
     }
+
+    Variants {
+        model: Quickshell.screens
+
+        StatusBar {}
+    }
+
+    Variants {
+        model: Quickshell.screens
+
+        ScreenMask {}
+    }
 }

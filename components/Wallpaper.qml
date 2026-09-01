@@ -10,7 +10,7 @@ PanelWindow {
 
     property url source: "file:///home/mystiafin/Pictures/Wallpapers/wallpaper_2.jpg"
     property real margin: 0
-    property real radius: 28
+    property real cornerRadius: 28
     property int imageFillMode: Image.PreserveAspectCrop
 
     screen: modelData
@@ -31,7 +31,7 @@ PanelWindow {
     ClippingRectangle {
         anchors.fill: parent
         anchors.margins: root.margin
-        radius: root.radius
+        radius: root.cornerRadius
         color: Theme.wallpaperFallbackColor
         contentUnderBorder: true
 
