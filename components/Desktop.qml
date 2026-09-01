@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick
+import "../services"
 
 LiquidWidgetHost {
     id: root
@@ -7,6 +8,23 @@ LiquidWidgetHost {
     required property var modelData
 
     screen: modelData
+
+    LiquidWidget {
+        id: controlCenterWidget
+
+        host: root
+        edge: LiquidWidget.Top
+        edgeAlignment: LiquidWidget.Center
+        edgeOffset: LiquidMetrics.edgeOverlap
+        shown: ControlCenterState.visible
+        targetWidth: Math.max(1, Math.min(780, root.width - 64))
+        targetHeight: 410
+        radius: LiquidMetrics.widgetRadius
+
+        LiquidControlCenter {
+            anchors.fill: parent
+        }
+    }
 
     LiquidWidget {
         id: launcherWidget
