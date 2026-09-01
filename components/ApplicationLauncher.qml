@@ -72,8 +72,6 @@ Item {
         height: 46
         radius: 14
         color: Theme.launcherSearchBackgroundColor
-        border.color: Theme.launcherSearchBorderColor
-        border.width: 1
 
         TextInput {
             id: searchInput

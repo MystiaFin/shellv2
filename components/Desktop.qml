@@ -10,6 +10,26 @@ LiquidWidgetHost {
     screen: modelData
 
     LiquidWidget {
+        id: utilityCenterWidget
+
+        host: root
+        edge: LiquidWidget.Right
+        edgeAlignment: LiquidWidget.Start
+        y: -10
+        edgeOffset: LiquidMetrics.edgeOverlap
+        shown: UtilityCenterState.visible
+        wantsKeyboardFocus: true
+        closedWidthScale: 1
+        targetWidth: 360
+        targetHeight: Math.max(1, Math.min(620, root.height - 96))
+        radius: LiquidMetrics.widgetRadius
+
+        LiquidUtilityCenter {
+            anchors.fill: parent
+        }
+    }
+
+    LiquidWidget {
         id: controlCenterWidget
 
         host: root

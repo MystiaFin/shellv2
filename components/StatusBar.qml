@@ -14,6 +14,16 @@ PanelWindow {
         .filter(workspace => workspace.output === root.screen.name)
     readonly property var activeWorkspace: screenWorkspaces.find(workspace => workspace.is_active)
 
+    function toggleControlCenter(): void {
+        UtilityCenterState.hide();
+        ControlCenterState.toggle();
+    }
+
+    function toggleUtilityCenter(): void {
+        ControlCenterState.hide();
+        UtilityCenterState.toggle();
+    }
+
     screen: modelData
     color: "transparent"
     implicitHeight: 40
@@ -27,6 +37,13 @@ PanelWindow {
 
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "status-bar"
+
+    HoverHandler {
+        onHoveredChanged: {
+            ControlCenterState.statusBarHovered = hovered;
+            UtilityCenterState.statusBarHovered = hovered;
+        }
+    }
 
     component BarText: Text {
         height: 26
@@ -114,7 +131,7 @@ PanelWindow {
                     anchors.fill: parent
                     z: -1
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: ControlCenterState.toggle()
+                    onClicked: root.toggleControlCenter()
                 }
 
                 Row {
@@ -132,7 +149,7 @@ PanelWindow {
                         ringColor: AudioService.muted
                             ? Theme.statusBarMutedColor
                             : Theme.statusBarBlueColor
-                        onClicked: ControlCenterState.toggle()
+                        onClicked: root.toggleControlCenter()
                         onScrolled: delta => AudioService.setVolume(AudioService.volume + delta)
                     }
 
@@ -145,7 +162,7 @@ PanelWindow {
                         ringColor: AudioService.microphoneMuted
                             ? Theme.statusBarMutedColor
                             : Theme.statusBarRedColor
-                        onClicked: ControlCenterState.toggle()
+                        onClicked: root.toggleControlCenter()
                         onScrolled: delta => AudioService.setMicrophoneVolume(
                             AudioService.microphoneVolume + delta)
                     }
@@ -211,6 +228,14 @@ PanelWindow {
                 height: 26
                 radius: 13
                 color: Theme.statusBarAccentColor
+
+                HoverHandler {
+                    cursorShape: Qt.PointingHandCursor
+                }
+
+                TapHandler {
+                    onTapped: root.toggleUtilityCenter()
+                }
 
                 Row {
                     id: trayIcons

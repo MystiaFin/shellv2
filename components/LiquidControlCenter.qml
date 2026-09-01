@@ -6,7 +6,7 @@ import "../services"
 Item {
     id: root
 
-    property real topPadding: LiquidMetrics.edgeOverlap + 52
+    property real topPadding: LiquidMetrics.edgeOverlap + 28
     property bool hoverArmed: false
 
     function formatTime(seconds) {
@@ -437,7 +437,7 @@ Item {
         id: closeTimer
         interval: 180
         onTriggered: {
-            if (!widgetHover.hovered)
+            if (!widgetHover.hovered && !ControlCenterState.statusBarHovered)
                 ControlCenterState.hide();
         }
     }
@@ -446,7 +446,9 @@ Item {
         id: entryTimer
         interval: 650
         onTriggered: {
-            if (ControlCenterState.visible && !widgetHover.hovered)
+            if (ControlCenterState.visible
+                    && !widgetHover.hovered
+                    && !ControlCenterState.statusBarHovered)
                 ControlCenterState.hide();
         }
     }
@@ -461,6 +463,18 @@ Item {
             } else {
                 entryTimer.stop();
                 closeTimer.stop();
+            }
+        }
+    }
+
+    Connections {
+        target: ControlCenterState
+
+        function onStatusBarHoveredChanged() {
+            if (ControlCenterState.statusBarHovered) {
+                closeTimer.stop();
+            } else if (ControlCenterState.visible && !widgetHover.hovered) {
+                closeTimer.restart();
             }
         }
     }
