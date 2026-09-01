@@ -24,4 +24,15 @@ Singleton {
     readonly property color launcherSearchBorderColor: activeTheme.searchBorderColor
     readonly property color launcherPlaceholderTextColor: activeTheme.placeholderTextColor
     readonly property color wallpaperFallbackColor: activeTheme.wallpaperFallbackColor
+    readonly property color statusBarBackgroundColor: activeTheme.foregroundColor
+    readonly property color statusBarSurfaceColor: activeTheme.searchBackgroundColor
+    readonly property color statusBarSurfaceBorderColor: activeTheme.searchBorderColor
+    readonly property color statusBarWorkspaceColor: activeTheme.highlightColor
+    readonly property color statusBarHighlightColor: "#e5c890"
+    readonly property color statusBarTextColor: activeTheme.textColor
+    readonly property color statusBarMutedColor: activeTheme.placeholderTextColor
+    readonly property color statusBarBlueColor: "#89b4fa"
+    readonly property color statusBarGreenColor: "#a6e3a1"
+    readonly property color statusBarRedColor: "#f38ba8"
+    readonly property color statusBarAccentColor: "#ef9f76"
 }
